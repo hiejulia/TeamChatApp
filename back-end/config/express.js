@@ -37,7 +37,14 @@ function initExpress(app){
   app.use(passport.initialize());
   app.use(passport.session());
 
-
+  app.use(function(req,res,next){
+    req.resources =  req.resources || {};
+    next();
+  });
+  //if dev env => load static files
+   if (config.serveStatic) {
+    app.use(serveStatic(path.join(root, 'front-end')));//public files for front-end 
+  }
 
 }
 
