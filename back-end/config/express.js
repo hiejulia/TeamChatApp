@@ -42,8 +42,10 @@ function initExpress(app){
     next();
   });
   //if dev env => load static files
+
    if (config.serveStatic) {
     app.use(serveStatic(path.join(root, '../front-end')));//public files for front-end 
+    //CHECK LAI 
   }
 
 }
